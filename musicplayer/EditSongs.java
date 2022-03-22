@@ -13,11 +13,11 @@ public class EditSongs extends Home {
 
 	public void addSong(ArrayList<MusicFiles> list) {
 		Scanner sc = new Scanner(System.in);
-		int size = list.get(list.size()-1).getSongId();
+		int size = list.size();
 		// System.out.println("Enter Song Id: ");
 		// songId = sc.nextInt();
 		// sc.nextLine();
-		size++;
+		size += 1;
 		System.out.println("Enter Song Title: ");
 		songTitle = sc.nextLine();
 		System.out.println("Enter Artist Name: ");
@@ -31,7 +31,7 @@ public class EditSongs extends Home {
 		list.add(new MusicFiles(size, songTitle, artistName, albumName, songLocation, description));
 		System.out.println("Song added to the PlayList!");
 		Home.showAllSongs(list);
-		
+
 	}
 
 	public void editExistingSong(ArrayList<MusicFiles> list) {
@@ -39,7 +39,7 @@ public class EditSongs extends Home {
 		System.out.println("Enter the song Id that you want to edit");
 		int id = sc.nextInt();
 		MusicFiles editingFile = new MusicFiles();
-		
+
 		for (int i = 0; i < list.size(); i++) {
 			if (list.get(i).getSongId() == id) {
 				System.out.println(list.get(i));
@@ -47,7 +47,7 @@ public class EditSongs extends Home {
 			}
 
 		}
-		
+
 		sc.nextLine();
 		System.out.println("Enter Song Title: ");
 		songTitle = sc.nextLine();
@@ -70,7 +70,7 @@ public class EditSongs extends Home {
 
 	public void deleteExistingSong(ArrayList<MusicFiles> list) {
 		int deleteId = 0;
-		boolean deleted=false;
+		boolean deleted = false;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the songId that to be deleted: ");
 		deleteId = sc.nextInt();
@@ -78,16 +78,15 @@ public class EditSongs extends Home {
 			if (list.get(i).getSongId() == deleteId) {
 				System.out.println(list.remove(i));
 				System.out.println("SongId: " + deleteId + " is Deleted...");
-				deleted=true;
+				deleted = true;
 				break;
 			}
-			
+
 		}
-		if(deleted==false) {
+		if (deleted == false) {
 			System.out.println("Id doesn't matched with any song");
-		}
-		else {
-		Home.showAllSongs(list);
+		} else {
+			Home.showAllSongs(list);
 		}
 
 	}
