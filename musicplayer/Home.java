@@ -21,9 +21,11 @@ public class Home {
 	public static void showAllSongs(ArrayList<MusicFiles> list) {
 		Comparator<MusicFiles> comparator = Comparator.comparing(MusicFiles::getSongTitle);
 		Collections.sort(list, comparator);
+		System.out.println("Song_Id  |   Song_Title    |     Artist_Name    |       Album_Name    |   Song_Location   |  Decription");
+		System.out.println();
 		for (MusicFiles musicFiles : list) {
 
-			System.out.format("%d %20s %20s %20s %20s %10s", musicFiles.getSongId(), musicFiles.getSongTitle(),
+			System.out.format("%4d %20s %20s %20s %20s %10s", musicFiles.getSongId(), musicFiles.getSongTitle(),
 					musicFiles.getArtistName(), musicFiles.getAlbumName(), musicFiles.getSongLocation(),
 					musicFiles.getDescription());
 			System.out.println();
@@ -42,8 +44,9 @@ public class Home {
 		list.add(new MusicFiles(04, "Yennodu Vaa Vaa", "Ilaiyaraaja", "NYP", "Melody songs", "song"));
 		list.add(new MusicFiles(05, "Nallai Allai", "A.R.Rahman", "Kaatru Veliyidai", "Melody songs", "song"));
 		Scanner scanner = new Scanner(System.in);
+		int size = list.size();
 		do {
-			System.out.println("============Music Player============\n\n" + "1. Press 1 to 'Play a Song'"
+			System.out.println("\n============Music Player============\n\n" + "1. Press 1 to 'Play a Song'"
 					+ "\n2. Press 2 to 'Search a Song' " + "\n3. Press 3 to 'Show all Songs'"
 					+ "\n4. Press 4 to 'Operate on Songs Database" + "\n5. Press 5 to 'Exit' ");
 			int choice = scanner.nextInt();
@@ -105,7 +108,8 @@ public class Home {
 				String choice1 = scanner.next();
 				switch (choice1) {
 				case "A": {
-					editSongs.addSong(list);
+					size+=1;
+					editSongs.addSong(list,size);
 					break;
 				}
 				case "B": {

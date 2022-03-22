@@ -11,13 +11,13 @@ public class EditSongs extends Home {
 	String songLocation;
 	String description;
 
-	public void addSong(ArrayList<MusicFiles> list) {
+	public void addSong(ArrayList<MusicFiles> list,int newId) {
 		Scanner sc = new Scanner(System.in);
-		int size = list.size();
+		
 		// System.out.println("Enter Song Id: ");
 		// songId = sc.nextInt();
 		// sc.nextLine();
-		size += 1;
+		//newId += 1;
 		System.out.println("Enter Song Title: ");
 		songTitle = sc.nextLine();
 		System.out.println("Enter Artist Name: ");
@@ -28,7 +28,7 @@ public class EditSongs extends Home {
 		songLocation = sc.nextLine();
 		System.out.println("Enter Song Description: ");
 		description = sc.nextLine();
-		list.add(new MusicFiles(size, songTitle, artistName, albumName, songLocation, description));
+		list.add(new MusicFiles(newId, songTitle, artistName, albumName, songLocation, description));
 		System.out.println("Song added to the PlayList!");
 		Home.showAllSongs(list);
 
